@@ -7,4 +7,4 @@ docker exec -d ${NAME} \
     tmux send-keys -t ${NAME} C-c
 
 # Start server
-docker exec -d ${NAME} /mnt/app/scripts/make.app.sh
+docker exec -d ${NAME} /mnt/app/scripts/app/build.sh

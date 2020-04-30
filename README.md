@@ -65,30 +65,34 @@ Have a look at the step by step commands in the scripts
 
 Build the image (and optionally the base image) 
 
-    ./scripts/build.image.sh
+    ./scripts/docker/image.sh
     
 Build the container
     
-    APP_DIR=$(pwd) PORT=8118 SSH=8119 ./scripts/build.container.sh
+    APP_DIR=$(pwd) PORT=8118 SSH=8119 ./scripts/docker/container.sh
     
-...restart it
+...(re)start the container
     
-    ./scripts/restart.container.sh
+    ./scripts/app/restart.sh
     
-...ssh into it
+...ssh into the container
 
     ssh -p 8119 root@localhost
     
     # Remove key verification after rebuild
     sed -i.bak '/\[localhost\]:8119/d' ~/.ssh/known_hosts
     
-...attached to app tmux session
+...attached to tmux session with running app
 
-    ./scripts/tmux.sh
+    ./scripts/app/tmux.sh
     
 ...reload app
     
-    ./scripts/reload.app.sh
+    ./scripts/app/reload.sh
+    
+Auto reload
+
+    make app    
         
 **Alternatively**, 
 use [Docker compose](https://docs.docker.com/compose/install).

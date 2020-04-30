@@ -18,4 +18,3 @@ func main() {
 	fmt.Printf("Listening on %v", addr)
 	fmt.Println(http.ListenAndServe(addr, nil))
 }
-
