@@ -63,21 +63,39 @@ Skip this step if you don't care about that
 Manually build and run the container. 
 Have a look at the step by step commands in the scripts
 
+Build the image (and optionally the base image) 
+
     ./scripts/build.image.sh
+    
+Build the container
     
     APP_DIR=$(pwd) PORT=8118 SSH=8119 ./scripts/build.container.sh
     
-    ./scripts/restart.sh
+...restart it
+    
+    ./scripts/restart.container.sh
     
 ...ssh into it
 
     ssh -p 8119 root@localhost
+    
+    # Remove key verification after rebuild
+    sed -i.bak '/\[localhost\]:8119/d' ~/.ssh/known_hosts
+    
+...attached to app tmux session
+
+    ./scripts/tmux.sh
+    
+...reload app
+    
+    ./scripts/reload.app.sh
         
 **Alternatively**, 
 use [Docker compose](https://docs.docker.com/compose/install).
 It comes with Docker Desktop, make sure you have that installed first.
 Build and run the container 
     
+    # TODO
     docker-compose up
 
 ...or stop it
@@ -113,3 +131,4 @@ Then setup your IDE like this
 
 [How To Install Go on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-18-04)
 
+[Attaching to a tmux session via SSH](https://superuser.com/a/912400/537059)

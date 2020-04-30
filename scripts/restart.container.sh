@@ -16,8 +16,10 @@ if [[ $(docker ps -f "name=${NAME}" -q) ]]; then
     docker stop ${NAME}
 fi
 
-# Start container
+echo "starting container..."
 docker start ${NAME}
 
-docker exec -d ${NAME} \
-    /usr/local/go/bin/go run -ldflags "-X main.addr=:8118" /mnt/app/main.go
+echo "starting app..."
+docker exec -d ${NAME} tmux new -d -s ${NAME}
+docker exec -d ${NAME} /mnt/app/scripts/make.app.sh
+

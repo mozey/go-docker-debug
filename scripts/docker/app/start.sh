@@ -21,8 +21,8 @@ echo "Hosts file..............................................................."
 echo "" >> /etc/hosts
 echo "${APP_HOST_IP}   host.ip" >> /etc/hosts
 
-echo "Symlinks................................................................."
-# Don't run if symlink already exists
-if [[ ! -e /root/app ]]; then
-    ln -s /mnt/app /root/app
-fi
+#echo "Symlinks................................................................."
+## Don't run if symlink already exists
+#if [[ ! -e /root/app ]]; then
+#    ln -s /mnt/app /root/app
+#fi

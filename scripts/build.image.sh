@@ -34,24 +34,34 @@ else
 fi
 
 # Remove image if exists
-if [[ $(docker image ls | grep ${NAME}) ]]; then
+if [[ $(docker image ls | grep ${NAME} | grep -v base) ]]; then
     echo "removing image..."
     docker image rm ${NAME}
 else
     echo "image does not exist"
 fi
 
+# Base image
+if [[ $(docker image ls | grep "${NAME}-base") ]]; then
+    if [[ ${REBUILD_BASE} == "true" ]]; then
+        echo "removing base image..."
+        docker image rm "${NAME}-base"
+    fi
+else
+    echo "base image does not exist"
+    REBUILD_BASE="true"
+fi
 if [[ ${REBUILD_BASE} == "true" ]]; then
-    echo "rebuilding base image..."
+    echo "building base image..."
     docker build -t "${NAME}-base" \
         -f ./scripts/docker/base/Dockerfile --rm \
-        ./docker/base
+        ./scripts/docker/base
 fi
 
 # Build image
 echo "building image..."
 docker build -t "${NAME}" \
     -f ./scripts/docker/app/Dockerfile --rm \
-    ./docker/app
+    ./scripts/docker/app
 
 echo "done"

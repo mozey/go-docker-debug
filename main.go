@@ -10,7 +10,7 @@ import (
 var addr string
 
 func hello(w http.ResponseWriter, req *http.Request) {
-	_, _ = fmt.Fprintf(w, "hello foo\n")
+	_, _ = fmt.Fprintf(w, "hello foo!\n")
 }
 
 func main() {
