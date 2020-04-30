@@ -1,6 +1,7 @@
-version: '3'
-services:
-    go-dd:
-        build: .
-        ports:
-            - "8118:8118"
+# TODO...
+#version: '3'
+#services:
+#    go-docker-debug:
+#        build: .
+#        ports:
+#            - "8118:8118"
