@@ -13,9 +13,9 @@ is used for change detection (of source files).
 The best tool for detecting changes might vary by host OS
 
 I like to use modules outside GOPATH and vendor dependencies,
-this example also works like that.
-For projects inside GOPATH see the example Dockerfile
-[here](https://blog.golang.org/docker)
+this example also works like that. And there might be multiple app processes.
+For single command projects inside GOPATH see the example Dockerfile
+[here](https://blog.golang.org/docker), and reference at the bottom.
 
 The Docker build is multi stage using 
 [phusion/baseimage](https://github.com/phusion/baseimage-docker).
@@ -69,7 +69,7 @@ Build the image (and optionally the base image)
     
 Build the container
     
-    APP_DIR=$(pwd) PORT=8118 SSH=8119 ./scripts/docker/container.sh
+    APP_DIR=$(pwd) PORT=8118 SSH=8119 DELVE=2345 ./scripts/docker/container.sh
     
 ...(re)start the container
     
@@ -117,9 +117,20 @@ Make sure the container is running
 
     docker ps
 
-Then setup your IDE like this
+Then setup Goland like this
 
-    TODO
+    Run > Edit Configurations...
+    
+    Add New Configuration (+ in top left corner) > Go Remote
+    Name = go-docker-debug
+    Host = localhost
+    Port = 2345
+    > Apply
+    
+    Run > Debug 'go-docker-debug'
+    
+Set a break point in `main.go`,
+and [reload](http://localhost:8118) 
 
 #### Remote debug from [VSCode](https://code.visualstudio.com/)
 
@@ -131,7 +142,10 @@ Then setup your IDE like this
 
 ## Reference
 
-[How to debug Golang applications inside Docker containers using Delve](https://mikemadisonweb.github.io/2018/06/14/go-remote-debug/)
+[How to debug Golang applications inside Docker containers using Delve](https://mikemadisonweb.github.io/2018/06/14/go-remote-debug/).
+Note the usage of `$@` in entrypoint.sh and CMD to call `dlv` in the Dockerfile.
+That might be useful for single command projects inside GOPATH
+when using minimal golang docker image
 
 [How To Install Go on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-18-04)
 

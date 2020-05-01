@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-NAME="go-docker-debug"
+echo "building app..."
+go build -ldflags "-X main.addr=:8118" -o /mnt/app/app.out /mnt/app/main.go
 
-tmux send -t ${NAME} "/usr/local/go/bin/go run -ldflags \"-X main.addr=:8118\" /mnt/app/main.go" ENTER
+echo "starting dlv..."
+dlv exec --headless --listen=:2345 --continue --accept-multiclient \
+--api-version=2 /mnt/app/app.out
