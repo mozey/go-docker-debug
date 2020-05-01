@@ -150,6 +150,9 @@ and [reload](http://localhost:8118)
 
 **TODO** How to debug `main_test.go` remotely overly SSH?
 
+**TODO** Run a test from the container (not from inside the IDE) using dlv,
+[see here](https://stackoverflow.com/a/43403880/639133)
+
 #### Remote debug from [VSCode](https://code.visualstudio.com/)
 
     TODO

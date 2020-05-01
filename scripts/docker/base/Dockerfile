@@ -32,6 +32,7 @@ ENV GOPATH "/root/go"
 # Dependencies
 RUN apt-get install -yq git --fix-missing
 RUN apt-get install -yq tmux --fix-missing
+RUN apt-get install -yq build-essential --fix-missing
 
 # Utilities
 RUN apt-get install -yq httpie --fix-missing
