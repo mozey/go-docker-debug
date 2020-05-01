@@ -9,16 +9,13 @@ import (
 
 var addr string
 
-func getResp() string {
-	a := 1
-	b := 2
+func GetResp(msg string, a int, b int) string {
 	c := a + b
-	resp := "hello foo!"
-	return fmt.Sprintf("%v %v\n", resp, c)
+	return fmt.Sprintf("%v %v\n", msg, c)
 }
 
 func hello(w http.ResponseWriter, req *http.Request) {
-	resp := getResp()
+	resp := GetResp("hello foo!", 1, 2)
 	_, _ = fmt.Fprintf(w, resp)
 }
 

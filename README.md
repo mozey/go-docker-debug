@@ -148,6 +148,8 @@ Set a break point in `main.go`,
 and [reload](http://localhost:8118) 
 **TODO** Break points are called twice?
 
+**TODO** How to debug `main_test.go` remotely overly SSH?
+
 #### Remote debug from [VSCode](https://code.visualstudio.com/)
 
     TODO
