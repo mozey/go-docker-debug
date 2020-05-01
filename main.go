@@ -11,7 +11,7 @@ var addr string
 
 func getResp() string {
 	a := 1
-	b := 1
+	b := 2
 	c := a + b
 	resp := "hello foo!"
 	return fmt.Sprintf("%v %v\n", resp, c)

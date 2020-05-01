@@ -33,6 +33,9 @@ ENV GOPATH "/root/go"
 RUN apt-get install -yq git --fix-missing
 RUN apt-get install -yq tmux --fix-missing
 
+# Utilities
+RUN apt-get install -yq httpie --fix-missing
+
 # TODO Installing dlv as below doesn't cache. Use curl instead?
 # Delve
 RUN /usr/local/go/bin/go get github.com/derekparker/delve/cmd/dlv

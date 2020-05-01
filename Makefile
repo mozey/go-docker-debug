@@ -30,9 +30,11 @@ test.cache: dependencies
 app.build: dependencies clean
 	/usr/bin/env bash -c "scripts/app/build.sh"
 
+# (Re)start docker container
 app.restart:
-	/usr/bin/env bash -c "scripts/app/restart.sh"
+	/usr/bin/env bash -c "scripts/docker/restart.sh"
 
+# Reload first stops dlv, rebuilds the app and then runs it with dlv
 app.reload:
 	/usr/bin/env bash -c "scripts/app/reload.sh"
 

@@ -71,28 +71,43 @@ Build the container
     
     APP_DIR=$(pwd) PORT=8118 SSH=8119 DELVE=2345 ./scripts/docker/container.sh
     
-...(re)start the container
+(Re)start the container
     
-    ./scripts/app/restart.sh
+    ./scripts/docker/restart.sh
     
-...ssh into the container
+...and [confirm it works](http://localhost:8118)
+    
+SSH into the container
 
-    ssh -p 8119 root@localhost
-    
-    # Remove key verification after rebuild
+    # You might have to reset key verification 
+    # after rebuilding the container
     sed -i.bak '/\[localhost\]:8119/d' ~/.ssh/known_hosts
     
-...attached to tmux session with running app
-
-    ./scripts/app/tmux.sh
+    ssh -p 8119 root@localhost
     
-...reload app
+    http localhost:8118
+
+    # Exit
+    Ctrl+d
+    
+Attached to tmux session in the container
+
+    ./scripts/docker/tmux.sh
+    
+    # Detach
+    Ctrl+b d
+    
+Reload app (that is running with dlv in a tmux session on the container)
     
     ./scripts/app/reload.sh
     
-Auto reload
+Run app with auto reload
 
-    make app    
+    make app
+    
+...or inside a detached tmux session
+
+    ./scripts/app/tmux.sh    
         
 **Alternatively**, 
 use [Docker compose](https://docs.docker.com/compose/install).
@@ -131,6 +146,7 @@ Then setup Goland like this
     
 Set a break point in `main.go`,
 and [reload](http://localhost:8118) 
+**TODO** Break points are called twice?
 
 #### Remote debug from [VSCode](https://code.visualstudio.com/)
 

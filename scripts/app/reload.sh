@@ -12,4 +12,4 @@ docker exec -d ${NAME} pkill dlv
 docker exec -d ${NAME} pkill app.out
 
 # Start server
-docker exec -d ${NAME} /mnt/app/scripts/app/build.tmux.sh
+docker exec -d ${NAME} /mnt/app/scripts/app/tmux.build.sh
