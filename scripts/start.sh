@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-tmux new-session -d -s "go-docker-debug" make app
+NAME="go-docker-debug"
+tmux send-keys -t ${NAME} C-c
+tmux new-session -d -s ${NAME} make app
