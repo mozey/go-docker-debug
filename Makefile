@@ -2,7 +2,7 @@
 # https://gist.github.com/lantins/e83477d8bccab83f078d
 
 # binary name to kill/restart
-PROG_APP = app.out
+PROG_APP = dev.out
 
 dependencies:
 	@command -v fswatch --version >/dev/null 2>&1 || \
@@ -12,7 +12,7 @@ dependencies:
 default: dependencies test
 
 # ..............................................................................
-# TODO There should run in the container
+# TODO Tests should run in the container
 clean:
 	go clean
 

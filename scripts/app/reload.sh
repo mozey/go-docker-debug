@@ -9,7 +9,7 @@ NAME="go-docker-debug"
 # Not ideal, a new tmux session must be created
 #docker exec -d ${NAME} tmux kill-session -t ${NAME}
 docker exec -d ${NAME} pkill dlv
-docker exec -d ${NAME} pkill app.out
+docker exec -d ${NAME} pkill dev.out
 
 # Start server
-docker exec -d ${NAME} /mnt/go-docker-debug/scripts/app/tmux.run.sh
+docker exec -d ${NAME} "/mnt/${NAME}/scripts/app/tmux.run.sh"
