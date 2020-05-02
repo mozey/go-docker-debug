@@ -107,7 +107,7 @@ Run app with auto reload
     
 ...or inside a detached tmux session
 
-    ./scripts/app/tmux.sh    
+    ./scripts/start.sh    
         
 **Alternatively**, 
 use [Docker compose](https://docs.docker.com/compose/install).

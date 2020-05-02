@@ -37,7 +37,9 @@ RUN apt-get install -yq build-essential --fix-missing
 # Utilities
 RUN apt-get install -yq httpie --fix-missing
 
-# TODO Installing dlv as below doesn't cache. Use curl instead?
+# TODO Installing as below doesn't cache. Use curl instead?
 # Delve
 RUN /usr/local/go/bin/go get github.com/derekparker/delve/cmd/dlv
+# gotest
+RUN /usr/local/go/bin/go get -u github.com/rakyll/gotest
 

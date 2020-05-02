@@ -26,15 +26,14 @@ test.cache: dependencies
 	gotest ./...
 
 # app...........................................................................
-# Local server with live reload
-app.build: dependencies clean
-	/usr/bin/env bash -c "scripts/app/build.sh"
-
-# (Re)start docker container
+# (Re)start docker container,
+# create a tmux session on the container,
+# then rebuild app and run it with debugging in tmux
 app.restart:
 	/usr/bin/env bash -c "scripts/docker/restart.sh"
 
-# Reload first stops dlv, rebuilds the app and then runs it with dlv
+# Reload stops app processing running in tmux on the container,
+# then rebuild app and run it with debugging
 app.reload:
 	/usr/bin/env bash -c "scripts/app/reload.sh"
 

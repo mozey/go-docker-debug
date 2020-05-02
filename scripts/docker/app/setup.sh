@@ -11,7 +11,7 @@ HOME="/root"
 APP_HOST_NAME="go-docker-debug"
 APP_BASH_PROFILE="${HOME}/.profile"
 APP_HOST_IP="host.ip" # /etc/hosts is configured in start.sh
-APP_PATH="/mnt/app"
+APP_PATH="/mnt/go-docker-debug"
 
 echo "Profile.................................................................."
 echo "" >> ${APP_BASH_PROFILE}

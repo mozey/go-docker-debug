@@ -35,5 +35,5 @@ fi
 echo "creating container..."
 docker create --name "${NAME}" \
     -p ${PORT}:8118 -p ${SSH}:22 -p ${DELVE}:2345 \
-    -v ${APP_DIR}:/mnt/app \
+    -v ${APP_DIR}:/mnt/go-docker-debug \
     ${NAME}

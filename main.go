@@ -15,7 +15,7 @@ func GetResp(msg string, a int, b int) string {
 }
 
 func hello(w http.ResponseWriter, req *http.Request) {
-	resp := GetResp("hello foo!", 1, 2)
+	resp := GetResp("hello foo!", 1, 1)
 	_, _ = fmt.Fprintf(w, resp)
 }
 
