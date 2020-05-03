@@ -2,11 +2,12 @@
 set -eu # exit on error or undefined variable
 bash -c 'set -o pipefail' # return code of first cmd to fail in a pipeline
 
-NAME="go-docker-debug"
-if [[ $(tmux ls | grep ${NAME}) ]]; then
+APP_NAME=${APP_NAME}
+
+if [[ $(tmux ls | grep ${APP_NAME}) ]]; then
     echo "stop session..."
-    tmux send-keys -t ${NAME} C-c
+    tmux send-keys -t ${APP_NAME} C-c
 fi
 echo "new session..."
-tmux new-session -d -s ${NAME} make app
+tmux new-session -d -s ${APP_NAME} make app
 echo "done"

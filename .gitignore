@@ -18,4 +18,5 @@ __debug_bin
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+dev.sh
 scripts/docker/app/id_rsa.pub

@@ -2,16 +2,18 @@
 set -eu # exit on error or undefined variable
 bash -c 'set -o pipefail' # return code of first cmd to fail in a pipeline
 
-NAME="go-docker-debug"
+APP_NAME=${APP_NAME}
+APP_MNT="/mnt/${APP_NAME}"
+APP_PORT=${APP_PORT}
 
 # Stop server
 # TODO C-c (or C-d) doesn't stop dlv?
-#docker exec -d ${NAME} \
-#    tmux send-keys -t ${NAME} C-c
+#docker exec -d ${APP_NAME} \
+#    tmux send-keys -t ${APP_NAME} C-c
 # Not ideal, a new tmux session must be created
-#docker exec -d ${NAME} tmux kill-session -t ${NAME}
-docker exec -d ${NAME} pkill dlv
-docker exec -d ${NAME} pkill dev.out
+#docker exec -d ${APP_NAME} tmux kill-session -t ${APP_NAME}
+docker exec -d ${APP_NAME} pkill dlv
+docker exec -d ${APP_NAME} pkill dev.out
 
 # Start server
-docker exec -d ${NAME} "/mnt/${NAME}/scripts/app/tmux.run.sh"
+docker exec -d ${APP_NAME} "${APP_MNT}/scripts/app/tmux.run.sh"

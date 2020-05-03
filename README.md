@@ -47,14 +47,19 @@ Get the code
     
     cd go-docker-debug
     
-**Optionally** run the program on your host
+Create `dev.sh` script to set env and run scripts
 
-    go run -ldflags "-X main.addr=:8118" main.go
+    cp ./dev.sample.sh ./dev.sh
+    
+Run the program on your host in a tmux session.
+
+    ./dev.sh ./scripts/app/build.dev.sh 
+    
+    ./dev.sh ./dev.out
 
 ...and [confirm it works](http://localhost:8118)
     
-The container will include your public key for SSH access.
-Skip this step if you don't care about that
+The container will include your public key for SSH access
 
     ssh-keygen -t rsa
         
@@ -65,15 +70,15 @@ Have a look at the step by step commands in the scripts
 
 Build the image (and optionally the base image) 
 
-    ./scripts/docker/image.sh
+    ./dev.sh ./scripts/docker/image.sh
     
 Build the container
     
-    APP_DIR=$(pwd) PORT=8118 SSH=8119 DELVE=2345 ./scripts/docker/container.sh
+    ./dev.sh ./scripts/docker/container.sh
     
 (Re)start the container
     
-    ./scripts/docker/restart.sh
+    ./dev.sh ./scripts/docker/restart.sh
     
 ...and [confirm it works](http://localhost:8118)
     
@@ -92,22 +97,22 @@ SSH into the container
     
 Attached to tmux session in the container
 
-    ./scripts/docker/tmux.sh
+    ./dev.sh ./scripts/docker/tmux.sh
     
     # Detach
     Ctrl+b d
     
 Reload app (that is running with dlv in a tmux session on the container)
     
-    ./scripts/app/reload.sh
+    ./dev.sh ./scripts/app/reload.sh
     
 Run app with auto reload
 
-    make app
+    ./dev.sh make app
     
 ...or inside a detached tmux session
 
-    ./scripts/start.sh    
+    ./dev.sh ./scripts/start.sh    
         
 **Alternatively**, 
 use [Docker compose](https://docs.docker.com/compose/install).
@@ -165,8 +170,6 @@ and [reload](http://localhost:8118)
 
 [How to debug Golang applications inside Docker containers using Delve](https://mikemadisonweb.github.io/2018/06/14/go-remote-debug/).
 Note the usage of `$@` in entrypoint.sh and CMD to call `dlv` in the Dockerfile.
-That might be useful for single command projects inside GOPATH
-when using minimal golang docker image
 
 [How To Install Go on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-18-04)
 

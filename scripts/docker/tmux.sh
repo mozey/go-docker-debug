@@ -2,6 +2,7 @@
 set -eu # exit on error or undefined variable
 bash -c 'set -o pipefail' # return code of first cmd to fail in a pipeline
 
-NAME="go-docker-debug"
+APP_NAME=${APP_NAME}
+APP_SSH=${APP_SSH}
 
-ssh -p 8119 root@localhost -t tmux attach -t ${NAME}
+ssh -p ${APP_SSH} root@localhost -t tmux attach -t ${APP_NAME}

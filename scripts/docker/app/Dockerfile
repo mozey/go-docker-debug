@@ -1,5 +1,11 @@
 FROM go-docker-debug-base
 
+# Below env will be available in all containers that use this image
+ARG APP_NAME
+ENV APP_NAME "${APP_NAME}"
+ARG APP_PORT
+ENV APP_PORT "${APP_PORT}"
+
 # Setup script
 COPY setup.sh /
 RUN /bin/bash /setup.sh
