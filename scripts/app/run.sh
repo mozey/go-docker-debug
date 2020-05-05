@@ -8,7 +8,7 @@ APP_PORT=${APP_PORT}
 
 tmux send -t ${APP_NAME} "export APP_DIR=${APP_MNT}" ENTER
 tmux send -t ${APP_NAME} "export APP_PORT=${APP_PORT}" ENTER
-tmux send -t ${APP_NAME} "${APP_MNT}/scripts/app/build.dev.sh" ENTER
+tmux send -t ${APP_NAME} "${APP_MNT}/scripts/app/build.sh" ENTER
 tmux send -t ${APP_NAME} "${APP_MNT}/scripts/app/debug.sh" ENTER
 
 

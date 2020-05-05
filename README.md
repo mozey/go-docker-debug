@@ -53,7 +53,7 @@ Create `dev.sh` script to set env and run scripts
     
 Run the program on your host in a tmux session.
 
-    ./dev.sh ./scripts/app/build.dev.sh 
+    ./dev.sh ./scripts/app/build.sh 
     
     ./dev.sh ./dev.out
 
