@@ -35,7 +35,7 @@ app.restart:
 # Reload stops app processing running in tmux on the container,
 # then rebuild app and run it with debugging
 app.reload:
-	/usr/bin/env bash -c "scripts/app/reload.sh"
+	/usr/bin/env bash -c "scripts/docker/reload.sh"
 
 # Watch .go files for changes.
 # fswatch includes everything unless an exclusion filter says otherwise

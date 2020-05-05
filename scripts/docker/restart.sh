@@ -17,5 +17,5 @@ docker start ${APP_NAME}
 
 echo "starting app..."
 docker exec -d ${APP_NAME} tmux new -d -s ${APP_NAME}
-docker exec -d ${APP_NAME} "${APP_MNT}/scripts/app/tmux.run.sh"
+docker exec -d ${APP_NAME} "${APP_MNT}/scripts/docker/run.sh"
 

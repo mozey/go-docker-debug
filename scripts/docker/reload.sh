@@ -16,4 +16,4 @@ docker exec -d ${APP_NAME} pkill dlv
 docker exec -d ${APP_NAME} pkill dev.out
 
 # Start server
-docker exec -d ${APP_NAME} "${APP_MNT}/scripts/app/tmux.run.sh"
+docker exec -d ${APP_NAME} "${APP_MNT}/scripts/docker/run.sh"

@@ -104,7 +104,7 @@ Attached to tmux session in the container
     
 Reload app (that is running with dlv in a tmux session on the container)
     
-    ./dev.sh ./scripts/app/reload.sh
+    ./dev.sh ./scripts/docker/reload.sh
     
 Run app with auto reload
 
