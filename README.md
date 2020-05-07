@@ -174,3 +174,5 @@ Note the usage of `$@` in entrypoint.sh and CMD to call `dlv` in the Dockerfile.
 [How To Install Go on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-18-04)
 
 [Attaching to a tmux session via SSH](https://superuser.com/a/912400/537059)
+
+[Debugging a running application on a remote machine](https://blog.jetbrains.com/go/2019/02/06/debugging-with-goland-getting-started)
